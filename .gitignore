@@ -1,3 +1,4 @@
 models/Tools/Connection.php
+models/Tools/ConnectionDalloway.php
 public/plantilla
 views/Test/index.php
