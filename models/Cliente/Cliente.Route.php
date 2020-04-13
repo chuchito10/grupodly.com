@@ -5,9 +5,9 @@
  */
 @session_start();
 if (!class_exists("Functions_tools")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/models/Tools/Functions_tools.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/Tools/Functions_tools.php';
 }if (!class_exists('ClienteController')) {
-  include $_SERVER['DOCUMENT_ROOT'].'/models/Cliente/Cliente.Controller.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Cliente/Cliente.Controller.php';
 }
 
 class ClienteRoute{

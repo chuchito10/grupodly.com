@@ -1,9 +1,9 @@
  <html> 
   <head>
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Head.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Head.php'; ?>
   </head>
   <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Header.php'; ?> 
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Header.php'; ?> 
     <!-- Off-Canvas Wrapper-->
     <div class="offcanvas-wrapper">
       <!-- Page Title-->
@@ -51,16 +51,16 @@
             <?php 
               switch ($_GET['menu']) {
                 case 1:
-                  include $_SERVER['DOCUMENT_ROOT'].'/views/Cuenta/Perfil/index.php';                  
+                  include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Cuenta/Perfil/index.php';                  
                   break;
                 case 2:
-                  include $_SERVER['DOCUMENT_ROOT'].'/views/Cuenta/Pedidos/index.php';                  
+                  include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Cuenta/Pedidos/index.php';                  
                   break;
                 case 3:
-                  include $_SERVER['DOCUMENT_ROOT'].'/views/Cuenta/DatosEnvio/index.php';                  
+                  include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Cuenta/DatosEnvio/index.php';                  
                   break;
                 case 4:
-                  include $_SERVER['DOCUMENT_ROOT'].'/views/Cuenta/DatosFacturacion/index.php';                  
+                  include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Cuenta/DatosFacturacion/index.php';                  
                   break;
                 default:
                   # code...
@@ -73,8 +73,8 @@
         </div>
       </div>
     <?php 
-      include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Footer.php'; 
-      include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Scripts.php'; 
+      include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Footer.php'; 
+      include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Scripts.php'; 
     ?>
     <script type="text/javascript" src="../../public/scripts/Login/login.js?id=<?php echo rand() ?>"></script>
     <script type="text/javascript" src="../../public/scripts/Cuenta/datos_envio.js?id=<?php echo rand() ?>"></script>

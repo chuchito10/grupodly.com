@@ -13,7 +13,7 @@
       <?php 
         @session_start();
         if (!class_exists('DetalleController')) {
-          include $_SERVER['DOCUMENT_ROOT'].'/models/Pedido/Detalle.Controller.php';
+          include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Pedido/Detalle.Controller.php';
         }
         $DetalleController = new DetalleController();
         $DetalleController->filter = "WHERE t04_pk01 = '".$_POST['PedidoKey']."' ";

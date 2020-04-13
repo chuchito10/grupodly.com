@@ -1,6 +1,6 @@
 <?php 
   if (!class_exists('DatosEnvio')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/models/Cliente/Cuenta/DatosEnvio.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Cliente/Cuenta/DatosEnvio.php';
   }
     $DatosEnvio = new DatosEnvio();
   if (isset($_POST['DatosEnvioKey'])) {

@@ -1,9 +1,9 @@
  <html> 
   <head>
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Head.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Head.php'; ?>
   </head>
   <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Header.php'; ?> 
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Header.php'; ?> 
 <!-- Off-Canvas Wrapper-->
     <div class="offcanvas-wrapper">
       <!-- Page Title-->
@@ -52,7 +52,7 @@
           </div>
           <?php 
             if (!class_exists('ProductoController')) {
-              include $_SERVER['DOCUMENT_ROOT'].'/models/Productos/Producto.Controller.php';
+              include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Productos/Producto.Controller.php';
             }
             $ProductoController = new ProductoController();
             $ProductoController->filter = " WHERE t06_f001 = ".$_GET['codigo']." ";
@@ -65,7 +65,7 @@
           <div class="col-md-6">
             <?php 
               if (!class_exists('ComentariosController')) {
-                include $_SERVER['DOCUMENT_ROOT'].'/models/Productos/Comentarios.Controller.php';
+                include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Productos/Comentarios.Controller.php';
               }
               $ComentariosController = new ComentariosController();
               $ResultComentarios = $ComentariosController->getProductoComentarios($ResultProducto->ProductoKey, false);
@@ -126,7 +126,7 @@
         </div>
         <?php
            } 
-           include $_SERVER['DOCUMENT_ROOT'].'/views/Productos/Informacion/index.php';
+           include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Productos/Informacion/index.php';
         ?>
         <!-- Related Products Carousel--
         <h3 class="text-center padding-top-2x mt-2 padding-bottom-1x">You May Also Like</h3>
@@ -211,8 +211,8 @@
         </div>
       </div>
       <?php 
-      include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Footer.php'; 
-      include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Scripts.php'; 
+      include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Footer.php'; 
+      include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Scripts.php'; 
     ?>
     <script type="text/javascript" src="../../public/scripts/Productos/reviews.js?id=<?php echo rand() ?>"></script>
   </body>

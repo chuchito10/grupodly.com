@@ -1,13 +1,13 @@
  <html> 
   <head>
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Head.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Head.php'; ?>
     <!-- dataTables.foundation.min CSS -->
     <link rel="stylesheet" type="text/css" href="../../public/plugins/DataTables/css/dataTables.foundation.min.css">
     <!-- fileinput-rtl.min CSS -->
     <link rel="stylesheet" type="text/css" href="../../public/plugins/file-input/css/fileinput.min.css">
   </head>
   <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Header.php'; ?>    
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Header.php'; ?>    
     <!-- Off-Canvas Wrapper-->
     <div class="offcanvas-wrapper">
       <!-- Page Title-->
@@ -38,7 +38,7 @@
               if (isset($_GET['menu'])) {
                 switch ($_GET['menu']) {
                   case 1:
-                    include $_SERVER['DOCUMENT_ROOT'].'/views/Admin/Productos/index.php';
+                    include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Admin/Productos/index.php';
                     break;
                   default:
                     echo "¡No se encuentra la opción solicitada!";
@@ -91,8 +91,8 @@
         </div>
       </div>
     <?php 
-      include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Footer.php'; 
-      include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Scripts.php'; 
+      include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Footer.php'; 
+      include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Scripts.php'; 
     ?>
     <!-- fileinput JS -->
     <script type="text/javascript" src="../../public/plugins/file-input/js/fileinput.min.js"></script>

@@ -2,11 +2,11 @@
 
 @session_start();
 if (!class_exists("Connection")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/models/Tools/Connection.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/Tools/Connection.php';
 }if (!class_exists("Functions_tools")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/models/Tools/Functions_tools.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/Tools/Functions_tools.php';
 }if (!class_exists("Cliente")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/models/Cliente/Cliente.Model.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/Cliente/Cliente.Model.php';
 }
 
   /**
@@ -44,6 +44,7 @@ if (!class_exists("Connection")) {
         if (!$this->conn->conexion()->connect_error) {
           $ClienteModel = new Cliente();
           $ClienteModel->SetParameters($this->conn, $this->Tool);
+          $ClienteModel->SetClienteKey($this->Tool->validate_isset_post("ClienteKey"));
           $ClienteModel->SetNombre($this->Tool->validate_isset_post("Nombre"));
           $ClienteModel->SetApellido($this->Tool->validate_isset_post("Apellido"));
           $ClienteModel->SetTelefono($this->Tool->validate_isset_post("Telefono"));

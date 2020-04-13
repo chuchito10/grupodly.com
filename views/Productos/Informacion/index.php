@@ -7,10 +7,10 @@
     </ul>
     <div class="tab-content">
       <div class="tab-pane fade show active" id="description" role="tabpanel">
-        <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Productos/Informacion/descripcion.php'; ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Productos/Informacion/descripcion.php'; ?>
       </div>
       <div class="tab-pane fade" id="reviews" role="tabpanel">
-        <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Productos/Informacion/comentarios.php'; ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Productos/Informacion/comentarios.php'; ?>
       </div>
     </div>
   </div>

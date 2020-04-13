@@ -2,7 +2,7 @@
  @session_start();
  if (isset($_SESSION['Ecommerce-PedidoKey'])) {
   if (!class_exists('DetalleController')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/models/Pedido/Detalle.Controller.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Pedido/Detalle.Controller.php';
   }
   $DetalleController = new DetalleController();
   $ResultDetalleController = (object)$DetalleController->getDetallePedido(false);

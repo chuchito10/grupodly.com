@@ -319,13 +319,13 @@ class Functions_tools
      */
     public function securityAjax(){
       if (!class_exists('EncrypData_')) {
-        include $_SERVER['DOCUMENT_ROOT'].'/models/Tools/EncrypData.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Tools/EncrypData.php';
       }
         $EncrypData = new EncrypData_('productivo');
 
         if (isset($_SESSION['Ecommerce-ClienteKey'])) {
           if (!class_exists("ClienteController")) {
-            include $_SERVER["DOCUMENT_ROOT"].'/models/Cliente/Cliente.Controller.php';
+            include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/Cliente/Cliente.Controller.php';
           }
           $ClienteController = new ClienteController();
           $ClienteController->filter = "WHERE t01_pk01 = ".$_SESSION['Ecommerce-ClienteKey']." ";

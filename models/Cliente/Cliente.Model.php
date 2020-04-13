@@ -90,7 +90,7 @@ class Cliente{
   public function create(){
     try{
       $result = array();
-      $result = $this->conn->Exec_store_procedure_json("CALL ClienteRegistro(
+      $result = $this->Connection->Exec_store_procedure_json("CALL ClienteRegistro(
           ".$this->ClienteKey.",
           '".$this->Nombre."',
           '".$this->Apellido."',

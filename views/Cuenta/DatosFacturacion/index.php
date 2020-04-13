@@ -1,5 +1,5 @@
 <div id="List-DatosFacturacion">
-	<?php include $_SERVER['DOCUMENT_ROOT'].'/views/Cuenta/DatosFacturacion/List.php'; ?>
+	<?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Cuenta/DatosFacturacion/List.php'; ?>
 </div>
 
 

@@ -14,7 +14,7 @@
       <?php 
         @session_start();
         if (!class_exists('PedidoController')) {
-          include $_SERVER['DOCUMENT_ROOT'].'/models/Pedido/Pedido.Controller.php';
+          include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Pedido/Pedido.Controller.php';
         }
         $PedidoController = new PedidoController();
         $PedidoController->filter = "WHERE t01_pk01 = '".$_SESSION['Ecommerce-ClienteKey']."' AND t04_f004 = 1 ";

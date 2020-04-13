@@ -2,11 +2,11 @@
 
 @session_start();
 if (!class_exists("Connection")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/models/Tools/Connection.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/Tools/Connection.php';
 }if (!class_exists("Functions_tools")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/models/Tools/Functions_tools.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/Tools/Functions_tools.php';
 }if (!class_exists("Categoria")) {
-  include $_SERVER["DOCUMENT_ROOT"].'/models/Catalogos/Categoria.Model.php';
+  include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/Catalogos/Categoria.Model.php';
 }
 
   /**

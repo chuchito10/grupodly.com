@@ -1,11 +1,11 @@
 <?php 
 
   if (!class_exists("CategoriaController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/models/Catalogos/Categoria.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/Catalogos/Categoria.Controller.php';
   }if (!class_exists("ProveedorController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/models/Catalogos/Proveedor.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/Catalogos/Proveedor.Controller.php';
   }if (!class_exists("UnidadMedidaController")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/models/Catalogos/UnidadMedida.Controller.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/Catalogos/UnidadMedida.Controller.php';
   }
   
 

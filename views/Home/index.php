@@ -6,10 +6,10 @@
  ?>
  <html> 
   <head>
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Head.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Head.php'; ?>
   </head>
   <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Header.php'; ?>       
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Header.php'; ?>       
         <!-- Off-Canvas Wrapper-->
     <div class="offcanvas-wrapper">
       <!-- Page Content-->
@@ -60,7 +60,7 @@
         <div class="row">
           <?php 
             if (!class_exists("ProductoController")) {
-              include $_SERVER["DOCUMENT_ROOT"].'/models/Productos/Producto.Controller.php';
+              include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/Productos/Producto.Controller.php';
             }
 
             $ProductoController = new ProductoController();
@@ -251,7 +251,7 @@
           <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: false, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 4000, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:2}, &quot;470&quot;:{&quot;items&quot;:3},&quot;630&quot;:{&quot;items&quot;:4},&quot;991&quot;:{&quot;items&quot;:5},&quot;1200&quot;:{&quot;items&quot;:6}} }">
             <?php 
             if (!class_exists("FileController")) {
-              include $_SERVER["DOCUMENT_ROOT"].'/models/File/File.Controller.php';
+              include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/File/File.Controller.php';
             }
               $FileController = new FileController();
               $FileController->filter = "WHERE t11_f004 = 'LOGO.MARCAS' ";
@@ -286,8 +286,8 @@
         </div>
       </section>
     <?php 
-      include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Footer.php'; 
-      include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Scripts.php'; 
+      include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Footer.php'; 
+      include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Scripts.php'; 
     ?>
   </body>
 </html>

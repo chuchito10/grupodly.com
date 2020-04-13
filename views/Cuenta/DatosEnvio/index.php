@@ -1,5 +1,5 @@
 <div id="List-DatosEnvio">
-	<?php include $_SERVER['DOCUMENT_ROOT'].'/views/Cuenta/DatosEnvio/List.php'; ?>
+	<?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Cuenta/DatosEnvio/List.php'; ?>
 </div>
 
  <!-- center Modal-->

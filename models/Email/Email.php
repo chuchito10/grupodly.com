@@ -1,7 +1,7 @@
 <?php 
-    include $_SERVER["DOCUMENT_ROOT"].'/models/Librerias/PHPMailer/class.phpmailer.php';
-    include $_SERVER["DOCUMENT_ROOT"].'/models/Librerias/PHPMailer/class.smtp.php';
-    include $_SERVER["DOCUMENT_ROOT"].'/models/Tools/Functions_tools.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/Librerias/PHPMailer/class.phpmailer.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/Librerias/PHPMailer/class.smtp.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/Tools/Functions_tools.php';
     @session_start();
     @header('Content-Type: charset=utf-8');
     class Email{

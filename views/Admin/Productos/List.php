@@ -1,6 +1,6 @@
 <?php 
   if (!class_exists('ProductoController')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/models/Productos/Producto.Controller.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Productos/Producto.Controller.php';
   }
   $ProductoController = new ProductoController();
   $ProductoController->filter = "";

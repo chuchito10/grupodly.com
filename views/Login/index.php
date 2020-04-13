@@ -6,10 +6,10 @@
  ?>
  <html> 
   <head>
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Head.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Head.php'; ?>
   </head>
   <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Header.php'; ?>       
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Header.php'; ?>       
     <!-- Off-Canvas Wrapper-->
     <div class="offcanvas-wrapper">
       <!-- Page Title-->
@@ -112,8 +112,8 @@
         </div>
       </div>
     <?php 
-      include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Footer.php'; 
-      include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Scripts.php'; 
+      include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Footer.php'; 
+      include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Scripts.php'; 
     ?>
     <script type="text/javascript" src="../../public/scripts/Login/login.js?id=<?php echo rand() ?>"></script>
   </body>

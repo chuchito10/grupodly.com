@@ -1,9 +1,9 @@
 <?php
     @session_start();
     if (!class_exists('Functions_tools')) {
-        include $_SERVER['DOCUMENT_ROOT'].'/models/Tools/Functions_tools.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Tools/Functions_tools.php';
     }if (!class_exists('OpenPayController')) {
-        include $_SERVER['DOCUMENT_ROOT'].'/models/OpenPay/OpenPay.Controller.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/OpenPay/OpenPay.Controller.php';
     }
     class OpenPayRoute{
         private $Tool;

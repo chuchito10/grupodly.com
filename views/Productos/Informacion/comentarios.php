@@ -1,6 +1,6 @@
 <?php 
   if (!class_exists('ComentariosController')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/models/Productos/Comentarios.Controller.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Productos/Comentarios.Controller.php';
   }
   $ComentariosController = new ComentariosController();
   $ResultComentariosController = $ComentariosController->getProductoComentarios($ResultProducto->ProductoKey, false);

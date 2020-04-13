@@ -1,15 +1,15 @@
 <?php
 @session_start();
 if (!class_exists('Connection')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/models/Tools/Connection.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Tools/Connection.php';
 }if (!class_exists('Functions_tools')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/models/Tools/Functions_tools.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Tools/Functions_tools.php';
 }if (!class_exists('Detalle')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/models/Pedido/Detalle.Model.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Pedido/Detalle.Model.php';
 }if (!class_exists('Pedido')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/models/Pedido/Pedido.Model.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Pedido/Pedido.Model.php';
 }if (!class_exists('Producto')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/models/Productos/Producto.Model.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Productos/Producto.Model.php';
 }
 
 class DetalleController{

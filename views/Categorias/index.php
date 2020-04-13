@@ -1,15 +1,15 @@
  <html> 
   <head>
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Head.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Head.php'; ?>
   </head>
   <body>
     <?php 
-      include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Header.php'; 
+      include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Header.php'; 
 
       if (!class_exists('CategoriaController')) {
-        include $_SERVER['DOCUMENT_ROOT'].'/models/Catalogos/Categoria.Controller.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Catalogos/Categoria.Controller.php';
       }if (!class_exists('ProductoController')) {
-        include $_SERVER['DOCUMENT_ROOT'].'/models/Productos/Producto.Controller.php';
+        include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Productos/Producto.Controller.php';
       }
 
      ?>
@@ -81,8 +81,8 @@
         </div>
       </div>
     <?php 
-      include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Footer.php'; 
-      include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Scripts.php'; 
+      include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Footer.php'; 
+      include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Scripts.php'; 
     ?>
   </body>
 </html>

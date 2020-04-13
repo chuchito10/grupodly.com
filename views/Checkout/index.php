@@ -10,10 +10,10 @@
  ?>
  <html> 
   <head>
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Head.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Head.php'; ?>
   </head>
   <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Header.php'; ?>  
+    <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Header.php'; ?>  
     <!-- Off-Canvas Wrapper-->
     <div class="offcanvas-wrapper">
       <!-- Page Title-->
@@ -53,23 +53,23 @@
             </div>
 
             <div id="PartialCheckout-1" class="PartialCheckout">
-              <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Checkout/datos_envio.php'; ?>
+              <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Checkout/datos_envio.php'; ?>
             </div>
             <div id="PartialCheckout-2" class="PartialCheckout" style="display: none">
-              <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Checkout/otro.php'; ?>
+              <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Checkout/otro.php'; ?>
             </div>
             <div id="PartialCheckout-3" class="PartialCheckout" style="display: none">
-              <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Checkout/pago.php'; ?>
+              <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Checkout/pago.php'; ?>
             </div>
             <div id="PartialCheckout-4" class="PartialCheckout" style="display: none">
-              <?php include $_SERVER['DOCUMENT_ROOT'].'/views/Checkout/resumen.php'; ?>
+              <?php include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Checkout/resumen.php'; ?>
             </div>
           </div>
         </div>
       </div>
     <?php 
-      include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Footer.php'; 
-      include $_SERVER['DOCUMENT_ROOT'].'/views/Partials/Scripts.php'; 
+      include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Footer.php'; 
+      include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/views/Partials/Scripts.php'; 
     ?>
     <script type="text/javascript" src="../../public/plugins/OpenPay/js/jquery.min.js"></script>
     <script type="text/javascript" src="../../public/plugins/OpenPay/js/openpay.v1.min.js"></script>

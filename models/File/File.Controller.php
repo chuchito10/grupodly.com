@@ -5,11 +5,11 @@
    */
   @session_start();
   if (!class_exists('Functions_tools')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/models/Tools/Functions_tools.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Tools/Functions_tools.php';
   }if (!class_exists('Connection')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/models/Tools/Connection.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Tools/Connection.php';
   }if (!class_exists("File")) {
-    include $_SERVER["DOCUMENT_ROOT"].'/models/File/File.Model.php';
+    include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/File/File.Model.php';
   }
 
   class FileController{

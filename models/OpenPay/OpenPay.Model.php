@@ -1,5 +1,5 @@
 <?php
-    include $_SERVER['DOCUMENT_ROOT'].'/models/Librerias/OpenPay/Openpay.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Librerias/OpenPay/Openpay.php';
     class OpenPay_{
         protected $OpenPayy;
         protected $TokenId;
