@@ -27,9 +27,6 @@
     }
 
     public function SetDatosFacturacionKey($DatosFacturacionKey){
-      if(!is_numeric($DatosFacturacionKey) || is_null($DatosFacturacionKey)){
-        throw new Exception('$DatosFacturacionKey debería de ser numero');
-      }
       $this->DatosFacturacionKey = $DatosFacturacionKey;
     }
 
@@ -48,9 +45,6 @@
     }
 
     public function SetRFC($RFC){
-      if(!is_numeric($RFC) || is_null($RFC)){
-        throw new Exception('$RFC debería de ser numero');
-      }
       $this->RFC = $RFC;
     }
 
@@ -116,6 +110,38 @@
       }
       $this->ClienteKey = $ClienteKey;
     }
+     /**
+     * Description
+     *
+     * @param string $a Foo
+     *
+     * @return int $b Bar
+     */
+    public function GetBy($filter, $orderBy){
+      try {
+        $SQLSTATEMENT = "SELECT * FROM t03_datos_facturacion ".$filter." ".$orderBy;
+        $result = $this->conn->QueryReturn($SQLSTATEMENT);
+        $data = false;
+        while ($row = $result->fetch_object()) {
+          $this->DatosFacturacionKey  = $row->t03_pk01;  
+          $this->RazonSocial          = $row->t03_f001;  
+          $this->Tipo                 = $row->t03_f002;  
+          $this->RFC                  = $row->t03_f003;  
+          $this->Calle                = $row->t03_f004;  
+          $this->NumeroExterior       = $row->t03_f005;  
+          $this->NumeroInterior       = $row->t03_f006;  
+          $this->CodigoPostal         = $row->t03_f007;  
+          $this->Estado               = $row->t03_f008;  
+          $this->Municipio            = $row->t03_f009;  
+          $this->Colonia              = $row->t03_f010;  
+          $this->Activo               = $row->t03_f011;
+          $data = true;
+        }
+        return $data;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
     /**
      * Description
      *
@@ -159,11 +185,11 @@
      */
     public function create(){
       try {
-        $result = $this->conn->Exec_store_procedure_json("CALL ClienteDatosFacturacion(
+        $result = $this->conn->Exec_store_procedure_json("CALL ClienteDatosFacturacion_(
           ".$this->DatosFacturacionKey.",
           '".$this->RazonSocial."',
           '".$this->Tipo."',
-          ".$this->RFC.",
+          '".$this->RFC."',
           '".$this->Calle."',
           '".$this->NumeroExterior."',
           '".$this->NumeroInterior."',
@@ -171,8 +197,6 @@
           '".$this->Estado."',
           '".$this->Municipio."',
           '".$this->Colonia."',
-          '".$this->Referencia."',
-          ".$this->Activo.",
           ".$this->ClienteKey.",
         @Result)", "@Result");
         return $result;

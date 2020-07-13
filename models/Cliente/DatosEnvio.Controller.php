@@ -26,6 +26,28 @@
      *
      * @return int $b Bar
      */
+    public function getBy(){
+      try{
+        if (!$this->conn->conexion()->connect_error) {
+          $DatosEnvio = new DatosEnvio();
+          $DatosEnvio->SetParameters($this->conn, $this->Tool);
+          $data = $DatosEnvio->GetBy($this->filter, $this->orderBy);
+          return $DatosEnvio;
+        }else{
+          throw new Exception("No se pueden obtener los datos maestros! por favor contactanos ");
+        }
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+
+     /**
+     * 
+     *
+     * @param string $a Foo
+     *
+     * @return int $b Bar
+     */
     public function get($ReturnJson){
       try{
         if (!$this->conn->conexion()->connect_error) {
@@ -47,7 +69,7 @@
      *
      * @return int $b Bar
      */
-    public function create($ReturnJson){
+    public function create(){
       try {
         if (!$this->conn->conexion()->connect_error) {
           $DatosEnvio = new DatosEnvio();
@@ -67,7 +89,7 @@
           $DatosEnvio->SetReferencia($this->Tool->validate_isset_post('Referencia'));
           $DatosEnvio->SetActivo(1);
           $DatosEnvio->SetClienteKey($_SESSION['Ecommerce-ClienteKey']);
-          return $ReturnJson ? json_encode($DatosEnvio->create(), JSON_UNESCAPED_UNICODE) : $DatosEnvio->create();
+          return $DatosEnvio->create();
         }else{
           throw new Exception("No se pueden obtener los datos maestros! por favor contactanos ");
         }
@@ -75,29 +97,4 @@
         throw $e;
       }
     }
-
-    public function controller(){
-      try {
-        $Action = $this->Tool->validate_isset_post('Action');
-        switch ($Action) {
-          case 'create':
-              echo $this->create(true);
-            break;
-          default:
-            throw new Exception("No se encuentra opción solicitada, por favor contactanos", 1);
-            break;
-        }
-      } catch (Exception $e) {
-        echo $this->Tool->Message_return(true, $e->getMessage(), null, true);
-      }
-    }
   }
-
-  $Tool = new Functions_tools();
-  # Comprobación Autorización Ajax    
-  if (isset($_SERVER['PHP_AUTH_USER']) && $Tool->securityAjax() && isset($_REQUEST['ActionDatosEnvio'])) { 
-    $DatosEnvioController = new DatosEnvioController();
-    $DatosEnvioController->Controller();
-    unset($DatosEnvioController);
-  }
-  unset($Tool);

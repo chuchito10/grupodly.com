@@ -113,7 +113,7 @@
         public function Delete(){
             try {
                 //code...
-                $result = $this->Connection->Exec_store_procedure_json("CALL PedidoDetalleEliminarItem(
+                $result = $this->Connection->Exec_store_procedure_json("CALL PedidoDetalleEliminarProducto(
                     '".$this->ItemCode."',
                     '".$this->Pedido."',
                 @Result);", "@Result");

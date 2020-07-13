@@ -139,6 +139,40 @@
      *
      * @return int $b Bar
      */
+    public function GetBy($filter, $orderBy){
+      try {
+        $SQLSTATEMENT = "SELECT * FROM t02_datos_envio ".$filter." ".$orderBy;
+        $result = $this->conn->QueryReturn($SQLSTATEMENT);
+        $data = false;
+        while ($row = $result->fetch_object()) {
+          $this->DatosEnvioKey  = $row->t02_pk01;  
+          $this->Nombre         = $row->t02_f001;  
+          $this->Apellido       = $row->t02_f002;  
+          $this->Celular        = $row->t02_f003;  
+          $this->Telefono       = $row->t02_f004;  
+          $this->Calle          = $row->t02_f005;  
+          $this->NumeroExterior = $row->t02_f006;  
+          $this->NumeroInterior = $row->t02_f007;  
+          $this->CodigoPostal   = $row->t02_f008;  
+          $this->Estado         = $row->t02_f009;  
+          $this->Municipio      = $row->t02_f010;  
+          $this->Colonia        = $row->t02_f011;  
+          $this->Referencia     = $row->t02_f012;
+          $this->Activo         = $row->t02_f013;
+          $data = true;
+        }
+        return $data;
+      } catch (Exception $e) {
+        throw $e;
+      }
+    }
+    /**
+     * Description
+     *
+     * @param string $a Foo
+     *
+     * @return int $b Bar
+     */
     public function Get($filter, $orderBy){
       try {
         $SQLSTATEMENT = "SELECT * FROM t02_datos_envio ".$filter." ".$orderBy;
@@ -177,7 +211,7 @@
      */
     public function create(){
       try {
-        $result = $this->conn->Exec_store_procedure_json("CALL ClienteDatosEnvio(
+        $result = $this->conn->Exec_store_procedure_json("CALL ClienteDatosEnvio_(
           ".$this->DatosEnvioKey.",
           '".$this->Nombre."',
           '".$this->Apellido."',

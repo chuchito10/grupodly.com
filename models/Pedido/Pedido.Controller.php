@@ -23,6 +23,19 @@ class PedidoController{
         $this->Connection = $conn;
         $this->Tool = $Tool;
     }
+    public function GetBy(){
+        try {
+            if (!$this->Connection->conexion()->connect_error) {
+                $this->PedidoModel->SetParameters($this->Connection, $this->Tool);
+                $result = $this->PedidoModel->GetBy($_SESSION['Ecommerce-PedidoKey'],"");
+                return $this->PedidoModel;
+            }else{
+                throw new Exception("No se pudo guardar la información solicitada, si el problema persiste por favor contactanos");
+            }
+        } catch (Exception $e) {
+            throw new Exception("No se pudo guardar la información solicitada, si el problema persiste por favor contactanos");
+        }
+    }
     public function Get($JsonResult){
         try {
             if (!$this->Connection->conexion()->connect_error) {
@@ -31,10 +44,10 @@ class PedidoController{
                 $result = $this->PedidoModel->Get($this->filter,"");
                 return $this->Tool->Message_return(false, "", $result, $JsonResult);
             }else{
-                throw new Exception("No se pudo guardar la información solicitada, si el problema persiste por favor contactanos", 1);
+                throw new Exception("No se pudo guardar la información solicitada, si el problema persiste por favor contactanos");
             }
         } catch (Exception $e) {
-            throw new Exception("No se pudo guardar la información solicitada, si el problema persiste por favor contactanos", 1);
+            throw new Exception("No se pudo guardar la información solicitada, si el problema persiste por favor contactanos");
         }
     }
     public function Controller(){
@@ -45,7 +58,7 @@ class PedidoController{
                     echo $this->List(true);
                 break;
                 default:
-                    throw new Exception("No se encontro la opción solictada, por favo contactanos");
+                    throw new Exception("No se encontro la opción solictada, por favor contactanos");
                 break;
             }
         } catch (Exception $e) {

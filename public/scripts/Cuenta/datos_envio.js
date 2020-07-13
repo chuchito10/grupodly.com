@@ -20,7 +20,7 @@ var ListDatosEnvio = function(Elem) {
  * @return {number} b - Bar
  */
 var nuevoRegistroDatosEnvio = function(Elem) {
-  ajax_('../../models/Cliente/Cuenta/DatosEnvio.php', 'POST', 'JSON', $('#form-datos-envio').serialize(), 
+  ajax_('../../models/Cliente/DatosEnvio.Route.php', 'POST', 'JSON', $('#form-datos-envio').serialize(), 
   function(response){
     if (!response.error) {
       toastAlert(response.typeError, '', response.message, 'topRight', 'icon-circle-check')

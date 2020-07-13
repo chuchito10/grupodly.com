@@ -1,90 +1,86 @@
 <?php 
-  if (!class_exists('DatosEnvio')) {
-    include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Cliente/Cuenta/DatosEnvio.php';
+  if (!class_exists('DatosEnvioController')) {
+    include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Cliente/DatosEnvio.Controller.php';
   }
-    $DatosEnvio = new DatosEnvio();
-  if (isset($_POST['DatosEnvioKey'])) {
-    $obj = (object)$DatosEnvio->get("WHERE t02_pk01 = ".$_POST['DatosEnvioKey']." ", "", false)->records[0];
-    $Action = 'update';
-  }else{
-    $obj = $DatosEnvio;
-    $Action = 'create';
-  }
- ?>
+  $DatosEnvioController = new DatosEnvioController();
+  $DatosEnvioController->filter = isset($_POST['DatosEnvioKey']) ? "WHERE t02_pk01 = '".$_POST['DatosEnvioKey']."' " : "WHERE t02_pk01 = 0 "; 
+  $key = isset($_POST['DatosEnvioKey']) ? $_POST['DatosEnvioKey'] : 0 ;
+  $DatosEnvio = $DatosEnvioController->getBy();
+?>
 <form class="row" id="form-datos-envio">
-  <input class="form-control" type="hidden" id="DatosEnvioKey" name="DatosEnvioKey" value="<?php echo $_POST['DatosEnvioKey'] ?>">
+  <input class="form-control" type="hidden" id="DatosEnvioKey" name="DatosEnvioKey" value="<?php echo $key ?>">
   <input class="form-control" type="hidden" id="ActionDatosEnvio" name="ActionDatosEnvio" value="true">
-  <input class="form-control" type="hidden" id="Action" name="Action" value="<?php echo $Action ?>">
+  <input class="form-control" type="hidden" id="Action" name="Action" value="create">
   <div class="col-sm-4">
     <div class="form-group">
-      <label for="reg-fn"><?php echo $obj->DatosEnvioNombre['label'] ?> <strong class="text-danger text-lg">*</strong></label>
-      <input class="form-control" type="<?php echo $obj->DatosEnvioNombre['type'] ?>" id="<?php echo $obj->DatosEnvioNombre['name'] ?>" name="<?php echo $obj->DatosEnvioNombre['name'] ?>" value="<?php echo $obj->DatosEnvioNombre['value'] ?>">
+      <label for="reg-fn">Nombre <strong class="text-danger text-lg">*</strong></label>
+      <input class="form-control" type="text" id="Nombre" name="Nombre" value="<?php echo $DatosEnvio->Nombre ?>">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
-      <label for="reg-fn"><?php echo $obj->DatosEnvioApellido['label'] ?> <strong class="text-danger text-lg">*</strong></label>
-      <input class="form-control" type="<?php echo $obj->DatosEnvioApellido['type'] ?>" id="<?php echo $obj->DatosEnvioApellido['name'] ?>" name="<?php echo $obj->DatosEnvioApellido['name'] ?>" value="<?php echo $obj->DatosEnvioApellido['value'] ?>">
+      <label for="reg-fn">Apellido <strong class="text-danger text-lg">*</strong></label>
+      <input class="form-control" type="text" id="Apellido" name="Apellido" value="<?php echo $DatosEnvio->Apellido ?>">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
-      <label for="reg-fn"><?php echo $obj->DatosEnvioCelular['label'] ?> <strong class="text-danger text-lg">*</strong></label>
-      <input class="form-control" type="<?php echo $obj->DatosEnvioCelular['type'] ?>" id="<?php echo $obj->DatosEnvioCelular['name'] ?>" name="<?php echo $obj->DatosEnvioCelular['name'] ?>" value="<?php echo $obj->DatosEnvioCelular['value'] ?>">
+      <label for="reg-fn">Celular <strong class="text-danger text-lg">*</strong></label>
+      <input class="form-control" type="text" id="Celular" name="Celular" value="<?php echo $DatosEnvio->Celular ?>">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
-      <label for="reg-fn"><?php echo $obj->DatosEnvioTelefono['label'] ?> <strong class="text-danger text-lg">*</strong></label>
-      <input class="form-control" type="<?php echo $obj->DatosEnvioTelefono['type'] ?>" id="<?php echo $obj->DatosEnvioTelefono['name'] ?>" name="<?php echo $obj->DatosEnvioTelefono['name'] ?>" value="<?php echo $obj->DatosEnvioTelefono['value'] ?>">
+      <label for="reg-fn">Telefono <strong class="text-danger text-lg">*</strong></label>
+      <input class="form-control" type="text" id="Telefono" name="Telefono" value="<?php echo $DatosEnvio->Telefono ?>">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
-      <label for="reg-fn"><?php echo $obj->DatosEnvioCalle['label'] ?> <strong class="text-danger text-lg">*</strong></label>
-      <input class="form-control" type="<?php echo $obj->DatosEnvioCalle['type'] ?>" id="<?php echo $obj->DatosEnvioCalle['name'] ?>" name="<?php echo $obj->DatosEnvioCalle['name'] ?>" value="<?php echo $obj->DatosEnvioCalle['value'] ?>">
+      <label for="reg-fn">Calle <strong class="text-danger text-lg">*</strong></label>
+      <input class="form-control" type="text" id="Calle" name="Calle" value="<?php echo $DatosEnvio->Calle ?>">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
-      <label for="reg-fn"><?php echo $obj->DatosEnvioNumeroExt['label'] ?></label>
-      <input class="form-control" type="<?php echo $obj->DatosEnvioNumeroExt['type'] ?>" id="<?php echo $obj->DatosEnvioNumeroExt['name'] ?>" name="<?php echo $obj->DatosEnvioNumeroExt['name'] ?>" value="<?php echo $obj->DatosEnvioNumeroExt['value'] ?>">
+      <label for="reg-fn">NumeroExterior</label>
+      <input class="form-control" type="text" id="NumeroExterior" name="NumeroExterior" value="<?php echo $DatosEnvio->NumeroExterior ?>">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
-      <label for="reg-fn"><?php echo $obj->DatosEnvioNumeroInt['label'] ?></label>
-      <input class="form-control" type="<?php echo $obj->DatosEnvioNumeroInt['type'] ?>" id="<?php echo $obj->DatosEnvioNumeroInt['name'] ?>" name="<?php echo $obj->DatosEnvioNumeroInt['name'] ?>" value="<?php echo $obj->DatosEnvioNumeroInt['value'] ?>">
+      <label for="reg-fn">NumeroInterior</label>
+      <input class="form-control" type="text" id="NumeroInterior" name="NumeroInterior" value="<?php echo $DatosEnvio->NumeroInterior ?>">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
-      <label for="reg-fn"><?php echo $obj->DatosEnvioCP['label'] ?> <strong class="text-danger text-lg">*</strong></label>
-      <input class="form-control" type="<?php echo $obj->DatosEnvioCP['type'] ?>" id="<?php echo $obj->DatosEnvioCP['name'] ?>" name="<?php echo $obj->DatosEnvioCP['name'] ?>" value="<?php echo $obj->DatosEnvioCP['value'] ?>">
+      <label for="reg-fn">CodigoPostal <strong class="text-danger text-lg">*</strong></label>
+      <input class="form-control" type="text" id="CodigoPostal" name="CodigoPostal" value="<?php echo $DatosEnvio->CodigoPostal ?>">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
-      <label for="reg-fn"><?php echo $obj->DatosEnvioEstado['label'] ?> <strong class="text-danger text-lg">*</strong></label>
-      <input class="form-control" type="<?php echo $obj->DatosEnvioEstado['type'] ?>" id="<?php echo $obj->DatosEnvioEstado['name'] ?>" name="<?php echo $obj->DatosEnvioEstado['name'] ?>" value="<?php echo $obj->DatosEnvioEstado['value'] ?>">
+      <label for="reg-fn">Estado <strong class="text-danger text-lg">*</strong></label>
+      <input class="form-control" type="text" id="Estado" name="Estado" value="<?php echo $DatosEnvio->Estado ?>">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
-      <label for="reg-fn"><?php echo $obj->DatosEnvioMunicipio['label'] ?> <strong class="text-danger text-lg">*</strong></label>
-      <input class="form-control" type="<?php echo $obj->DatosEnvioMunicipio['type'] ?>" id="<?php echo $obj->DatosEnvioMunicipio['name'] ?>" name="<?php echo $obj->DatosEnvioMunicipio['name'] ?>" value="<?php echo $obj->DatosEnvioMunicipio['value'] ?>">
+      <label for="reg-fn">Municipio <strong class="text-danger text-lg">*</strong></label>
+      <input class="form-control" type="text" id="Municipio" name="Municipio" value="<?php echo $DatosEnvio->Municipio ?>">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
-      <label for="reg-fn"><?php echo $obj->DatosEnvioColonia['label'] ?> <strong class="text-danger text-lg">*</strong></label>
-      <input class="form-control" type="<?php echo $obj->DatosEnvioColonia['type'] ?>" id="<?php echo $obj->DatosEnvioColonia['name'] ?>" name="<?php echo $obj->DatosEnvioColonia['name'] ?>" value="<?php echo $obj->DatosEnvioColonia['value'] ?>">
+      <label for="reg-fn">Colonia <strong class="text-danger text-lg">*</strong></label>
+      <input class="form-control" type="text" id="Colonia" name="Colonia" value="<?php echo $DatosEnvio->Colonia ?>">
     </div>
   </div>
   <div class="col-sm-4">
     <div class="form-group">
-      <label for="reg-fn"><?php echo $obj->DatosEnvioReferencia['label'] ?></label>
-      <input class="form-control" type="<?php echo $obj->DatosEnvioReferencia['type'] ?>" id="<?php echo $obj->DatosEnvioReferencia['name'] ?>" name="<?php echo $obj->DatosEnvioReferencia['name'] ?>" value="<?php echo $obj->DatosEnvioReferencia['value'] ?>">
+      <label for="reg-fn">Referencia</label>
+      <input class="form-control" type="text" id="Referencia" name="Referencia" value="<?php echo $DatosEnvio->Referencia ?>">
     </div>
   </div>
   <div class="col-12 text-center text-sm-right">
@@ -93,5 +89,4 @@
 </form>
 <?php 
   unset($DatosEnvio);
-  unset($obj);
  ?>

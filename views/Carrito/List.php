@@ -44,7 +44,7 @@
                 <td class="text-center"><?php echo $row->DetalleCantidad; ?></td>
                 <td class="text-center text-lg text-medium">$<?php echo number_format($row->DetalleSubtotal); ?></td>
                 <td class="text-center">
-                  <a class="remove-from-cart" data-toggle="tooltip" title="Eliminar articulo" productokey="<?php echo $row->ProductoKey ?>" onclick="deleteProductoCarrito(this)"><i class="icon-cross"></i></a>
+                  <a class="remove-from-cart" data-toggle="tooltip" title="Eliminar articulo" productokey="<?php echo $row->Detallekey ?>" onclick="deleteProductoCarrito(this)"><i class="icon-cross"></i></a>
                 </td>
               </tr>
               <?php 
@@ -70,32 +70,28 @@
           </table>
         </div>
         <div class="shopping-cart-footer">
-          <!-- <div class="column">
-            <form class="coupon-form" method="post">
-              <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required>
-              <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button>
-            </form>
-          </div> -->
           <?php 
-            if (isset($_SESSION['Ecommerce-PedidoKey'])) {
-              $obj = $ResultDetalleController->records[0];
-              $_SESSION['Ecommerce-PedidoTotal'] = $obj->PedidoTotal > 0 ? $obj->PedidoTotal : 0;
+             $pedidoSubtotal = 0;
+             $pedidoIva = 0;
+             $pedidoTotal = 0;
+             if(isset($_SESSION['Ecommerce-PedidoKey'])){ 
+              if (!class_exists('PedidoController')) {
+                include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Pedido/Pedido.Controller.php';
+              }
+               $PedidoController = new PedidoController();
+               $Pedido = $PedidoController->GetBy();
+               $pedidoSubtotal = $Pedido->SubTotal;
+               $pedidoIva = $Pedido->Iva;
+               $pedidoTotal = $Pedido->Total;
+             }
           ?>
           <div class="column text-lg">
-            Subtotal: <span class="text-medium">$<?php echo $obj->PedidoSubtotal; ?></span><br>
-            Iva: <span class="text-medium">$<?php echo $obj->PedidoIva; ?></span><br>
-            Total: <span class="text-medium">$<?php echo $obj->PedidoTotal; ?></span>
+            Subtotal: <span class="text-medium">$<?php echo $pedidoSubtotal; ?></span><br>
+            Iva: <span class="text-medium">$<?php echo $pedidoIva; ?></span><br>
+            Total: <span class="text-medium">$<?php echo $pedidoTotal; ?></span>
           </div>
-          <?php }else{ ?>
-          <div class="column text-lg">
-            Subtotal: <span class="text-medium">0</span><br>
-            Iva: <span class="text-medium">0</span><br>
-            Total: <span class="text-medium">0</span>
-          </div>
-          <?php } ?>
         </div>
         <div class="shopping-cart-footer">
-          <!-- <div class="column"><a class="btn btn-outline-secondary" href="shop-grid-ls.html"><i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a></div> -->
           <div class="column"><!-- <a class="btn btn-primary" href="#">Update Cart</a> --><a class="btn btn-success" href="../Checkout/">Terminar</a></div>
         </div>
         

@@ -20,7 +20,7 @@ var ListDatosFacturacion = function() {
  * @return {number} b - Bar
  */
 var nuevoRegistroDatosFacturacion = function(Elem) {
-  ajax_('../../models/Cliente/Cuenta/DatosFacturacion.php', 'POST', 'JSON', $('#form-datos-facturacion').serialize(), 
+  ajax_('../../models/Cliente/DatosFacturacion.Route.php', 'POST', 'JSON', $('#form-datos-facturacion').serialize(), 
   function(response){
     if (!response.error) {
       toastAlert(response.typeError, '', response.message, 'topRight', 'icon-circle-check')
