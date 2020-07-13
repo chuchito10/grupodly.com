@@ -23,7 +23,7 @@ var Registro = function(Elem) {
  * @return {number} b - Bar
  */
 var Login = function(Elem) {
-  ajax_('../../models/Login/Login.php', 'POST', 'JSON', $('#form-login').serialize(), 
+  ajax_('../../models/Login/Login.Route.php', 'POST', 'JSON', $('#form-login').serialize(), 
   function(response){
     if (!response.error) {
       Alerts('alert-login', 'success', response.message)

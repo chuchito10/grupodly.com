@@ -41,7 +41,7 @@ if (!class_exists("Connection")) {
         if (!$this->conn->conexion()->connect_error) {
           $ComentariosModel = new Comentarios(); 
           $ComentariosModel->initial($this->conn, $this->Tool);
-          $items = $ComentariosModel->ListProductoComentarios("WHERE t06_pk01 = ".$Id." ", "");
+          $items = $ComentariosModel->ListProductoComentarios("WHERE codigo_inventario = ".$Id." ", "");
           unset($ComentariosModel);
           return $this->Tool->Message_return(false, "", $items, $return_json);
         }

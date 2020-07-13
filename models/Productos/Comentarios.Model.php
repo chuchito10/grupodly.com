@@ -81,10 +81,11 @@
     public function ListProductoComentarios($filter, $order){
       try {
         $SQLSTATEMENT = "SELECT * FROM list_producto_comentarios ".$filter." ".$order;
+        // echo $SQLSTATEMENT;
         $result = $this->conn->QueryReturn($SQLSTATEMENT);
         $items = [];
         while ($row = $result->fetch_object()) {
-          $ResultRanking = (object)$this->ListProductoRanking("WHERE t06_pk01 = ".$row->t06_pk01." ", "GROUP BY t06_pk01")[0];
+          // $ResultRanking = (object)$this->ListProductoRanking("WHERE t06_pk01 = ".$row->t06_pk01." ", "GROUP BY t06_pk01")[0];
           
           $Comentarios = new Comentarios();
           $Comentarios->Key               = $row->t09_pk01;
@@ -92,10 +93,10 @@
           $Comentarios->Descripcion       = $row->t09_f002;
           $Comentarios->TotalEstrellas    = $row->t09_f003;
           $Comentarios->ClienteKey        = $row->t01_pk01;
-          $Comentarios->ProductoKey       = $row->t06_pk01;
-          $Comentarios->ClienteName       = empty($row->t06_pk01) ? 'Anonimo' : $row->t06_pk01;
-          $Comentarios->Ranking           = $ResultRanking->Ranking;
-          $Comentarios->TotalComentarios  = $ResultRanking->TotalComentarios;
+          $Comentarios->ProductoKey       = $row->codigo;
+          // $Comentarios->ClienteName       = empty($row->t06_pk01) ? 'Anonimo' : $row->t06_pk01;
+          // $Comentarios->Ranking           = $ResultRanking->Ranking;
+          // $Comentarios->TotalComentarios  = $ResultRanking->TotalComentarios;
           $items[] = $Comentarios;
           unset($ResultRanking);
           unset($Comentarios);

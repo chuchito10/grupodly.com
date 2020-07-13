@@ -55,9 +55,9 @@
               include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Productos/Producto.Controller.php';
             }
             $ProductoController = new ProductoController();
-            $ProductoController->filter = " WHERE t06_f001 = ".$_GET['codigo']." ";
+            $ProductoController->filter = " WHERE codigo = '".$_GET['codigo']."' ";
             $ProductoController->order = " ";
-            $ResultProducto = $ProductoController->get(false);
+            $ResultProducto = $ProductoController->get();
             if ($ResultProducto->count > 0) {
               $ResultProducto = $ResultProducto->records[0];
            ?>

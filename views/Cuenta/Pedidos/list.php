@@ -1,3 +1,15 @@
+
+<?php 
+   @session_start();
+   if (!class_exists('PedidoController')) {
+     include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Pedido/Pedido.Controller.php';
+   }
+   $PedidoController = new PedidoController();
+   $PedidoController->filter = "WHERE t01_pk01 = '".$_SESSION['Ecommerce-ClienteKey']."' AND t04_f004 = 1 ";
+   $ResultPedidoController = (object)$PedidoController->Get(false);
+
+   if ($ResultPedidoController->count > 0) {
+?>
 <div class="table-responsive shopping-cart">
   <table class="table" id="TablePedidos">
     <thead>
@@ -12,15 +24,7 @@
     </thead>
     <tbody>
       <?php 
-        @session_start();
-        if (!class_exists('PedidoController')) {
-          include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Pedido/Pedido.Controller.php';
-        }
-        $PedidoController = new PedidoController();
-        $PedidoController->filter = "WHERE t01_pk01 = '".$_SESSION['Ecommerce-ClienteKey']."' AND t04_f004 = 1 ";
-        $ResultPedidoController = (object)$PedidoController->List(false);
-
-        if ($ResultPedidoController->count > 0) {
+       
           foreach ($ResultPedidoController->records as $key => $Pedido){ 
               
       ?>
@@ -36,16 +40,18 @@
       </tr>
       <?php 
           } 
-        }else{
-      ?>
-      <td colspan="5">
-        <div class="alert alert-danger alert-dismissible fade show text-center" style="margin-bottom: 30px;">
-          <span class="alert-close" data-dismiss="alert"></span>&nbsp;&nbsp;¡Aún no tienes ordenes de compra, por favor realiza tu primera compra!
-        </div>
-      </td>
-      <?php 
-          } 
+       
       ?>
     </tbody>
   </table>
 </div>
+
+<?php 
+   }else{
+?>
+ <div class="alert alert-danger alert-dismissible fade show text-center" style="margin-bottom: 30px;">
+          <span class="alert-close" data-dismiss="alert"></span>&nbsp;&nbsp;¡Aún no tienes ordenes de compra, por favor realiza tu primera compra!
+        </div>
+<?php 
+          } 
+      ?>

@@ -38,7 +38,7 @@
                     $this->OpenPay_->SetPublicKey("sk_9c856f92cb03439d9939220d9838226a");
                     $this->OpenPay_->SetTokenId($source_id);
                     $this->OpenPay_->SetDeviceSessionId($device_session_id);
-                    $this->OpenPay_->SetProductionMode(true);
+                    $this->OpenPay_->SetProductionMode(false);
                     
                     $this->ClienteController->filter = "where t01_pk01 = '".$UserID."'";
                     $this->ClienteController->order = "";
@@ -46,30 +46,19 @@
                     $pedido = $this->PedidoModel->GetBy($pedidoID,"");
                     $Result = $this->OpenPay_->CreateCharge($ClienteModel,$this->PedidoModel,"MXN");
                     if($Result->status == "completed"){
-                        // echo ;
                         $this->PedidoModel->SetReferenciaOpenPay($Result->id);
                         $this->PedidoModel->SetDatosEnvio(1);
                         $this->PedidoModel->SetDatosFacturacion(1);
                         $this->PedidoModel->SetKey($pedidoID);
                         $resultStre = $this->PedidoModel->UpdateReferencePago();
-                        // if($resultStre['error'] == false){
-                        //     // se actualizo a tabla
-                        // }else{
-                        //     //no se actualizo a tabla
-                        // }
-                        //exito
                         return $this->Tool->Message_return(false, "Pago exitoso!!", null, false);
                     }else{
-                        // echo $Result->status;
                         throw new Exception("No se pudo realizar el pago, verifica que tus datos sean correctos", 1);
                     }
-                    // print_r($Result);
-
                 }else{
                     throw new Exception("No se pudo guardar la información solicitada, si el problema persiste por favor contactanos", 1);
                 }
             } catch (Exception $e) {
-                // throw new Exception("eXCEPTION No se pudo obtener la información solicitada, si el problema persiste por favor contactanos", 1);
                 throw $e;
             }
         }

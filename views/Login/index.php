@@ -43,10 +43,10 @@
               <input class="form-control" type="hidden" id="ActionLogin" name="ActionLogin" value="true">
               <input class="form-control" type="hidden" id="Action" name="Action" value="login">
               <div class="form-group input-group">
-                <input class="form-control" type="email" id="Email" name="Email" placeholder="Correo eléctronico" required><span class="input-group-addon"><i class="icon-mail"></i></span>
+                <input class="form-control" type="email" id="Email" name="Email" placeholder="Correo eléctronico" required autocomplete="off"><span class="input-group-addon"><i class="icon-mail"></i></span>
               </div>
               <div class="form-group input-group">
-                <input class="form-control" type="password" id="Password" name="Password" placeholder="Contraseña" required><span class="input-group-addon"><i class="icon-lock"></i></span>
+                <input class="form-control" type="password" id="Password" name="Password" placeholder="Contraseña" required autocomplete="new-password"><span class="input-group-addon"><i class="icon-lock"></i></span>
               </div>
               <div class="d-flex flex-wrap justify-content-between padding-bottom-1x">
                 <div class="custom-control custom-checkbox">
@@ -95,13 +95,13 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="reg-pass">Contraseña</label>
-                  <input class="form-control" type="password" id="ClientePassword" name="ClientePassword" autocomplete="off">
+                  <input class="form-control" type="password" id="ClientePassword" name="ClientePassword" autocomplete="new-password">
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="reg-pass-confirm">Confirmar contraseña</label>
-                  <input class="form-control" type="password" id="ClientePasswordConfirm" name="ClientePasswordConfirm" autocomplete="off">
+                  <input class="form-control" type="password" id="ClientePasswordConfirm" name="ClientePasswordConfirm" autocomplete="new-password">
                 </div>
               </div>
               <div class="col-12 text-center text-sm-right">

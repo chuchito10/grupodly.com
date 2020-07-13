@@ -87,16 +87,10 @@
         public function Add(){
             try {
                 //code...
-                $result = $this->Connection->Exec_store_procedure_json("CALL PedidoDetalleAgregar(
-                    null,
-                    null,
-                    '".$this->Iva."',
-                    null,
+                $result = $this->Connection->Exec_store_procedure_json("CALL PedidoDetalleAgregarProducto(
                     '".$this->Cantidad."',
-                    '".$this->Estatus."',
                     '".$this->ItemCode."',
                     '".$this->Pedido."',
-                    '".$this->PrecioUnitario."',
                 @Result);", "@Result");
                 return $result;
             } catch (Exception $e) {
@@ -172,14 +166,13 @@
                     $newItem->DetalleIva            = $row->t05_f002;
                     $newItem->DetalleTotal          = $row->t05_f003;
                     $newItem->DetalleCantidad       = $row->t05_f004;
-                    $newItem->DetallePrecioUnitario = $row->t05_f006;
 
-                    $newItem->ProductoKey           = $row->t06_pk01;
-                    $newItem->ProductoCodigo        = $row->t06_f001;
-                    $newItem->ProductoDescripcion   = $row->t06_f002;
-                    $newItem->ProductoImg           = $row->t06_f003;
-                    $newItem->ProductoExistencia    = $row->t06_f007;
-                    $newItem->ProductoPrecio        = $row->t06_f008;
+                    $newItem->ProductoKey           = $row->id;
+                    $newItem->ProductoCodigo        = $row->codigo;
+                    $newItem->ProductoDescripcion   = $row->dsc_producto;
+                    $newItem->ProductoImg           = $row->img;
+                    $newItem->ProductoExistencia    = $row->cantidad;
+                    $newItem->ProductoPrecio        = $row->costo;
                     $data[] = $newItem;
                     unset($newItem);
                 }

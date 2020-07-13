@@ -14,7 +14,7 @@
     <input type="hidden" class="form-control" id="ProductoKey-<?php echo $row->Codigo ?>" name="ProductoKey-<?php echo $row->Codigo ?>" value="<?php echo $row->ProductoKey ?>">
     <input type="hidden" class="form-control" id="ProductoCantidad-<?php echo $row->Codigo ?>" name="ProductoCantidad-<?php echo $row->Codigo ?>" value="1">
     <h4 class="product-price">
-      $<?php $row->Precio ?>
+      $<?php echo $row->Precio ?>
     </h4>
     <div class="product-buttons">
       <button class="btn btn-outline-primary btn-sm" code="<?php echo $row->Codigo ?>" onclick="agregarToCarrito(this)"><i class="icon-bag"></i> Añadir carrito</button>

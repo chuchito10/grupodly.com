@@ -66,7 +66,7 @@
             $ProductoController = new ProductoController();
             $ProductoController->filter = "";
             $ProductoController->order = " ORDER BY RAND() LIMIT 3";
-            $ResultProductoController = $ProductoController->get(false);
+            $ResultProductoController = $ProductoController->get();
 
           foreach ($ResultProductoController->records as $key => $row): 
             $Imgpath = '../../public/img/Productos/'.$row->Img.'.jpg';
@@ -146,7 +146,7 @@
             $ProductoController = new ProductoController();
             $ProductoController->filter = "";
             $ProductoController->order = " ORDER BY RAND() LIMIT 8";
-            $ResultProductoController = $ProductoController->get(false);
+            $ResultProductoController = $ProductoController->get();
 
           foreach ($ResultProductoController->records as $key => $row): 
             $Imgpath = '../../public/img/Productos/'.$row->Img.'.jpg';
@@ -180,7 +180,7 @@
                 $ProductoController = new ProductoController();
                 $ProductoController->filter = "";
                 $ProductoController->order = " ORDER BY RAND() LIMIT 4";
-                $ResultProductoController = $ProductoController->get(false);
+                $ResultProductoController = $ProductoController->get();
 
               foreach ($ResultProductoController->records as $key => $row): 
                 $Imgpath = '../../public/img/Productos/'.$row->Img.'.jpg';
@@ -203,7 +203,7 @@
                 $ProductoController = new ProductoController();
                 $ProductoController->filter = "";
                 $ProductoController->order = " ORDER BY RAND() LIMIT 4";
-                $ResultProductoController = $ProductoController->get(false);
+                $ResultProductoController = $ProductoController->get();
 
               foreach ($ResultProductoController->records as $key => $row): 
                 $Imgpath = '../../public/img/Productos/'.$row->Img.'.jpg';
@@ -226,7 +226,7 @@
                 $ProductoController = new ProductoController();
                 $ProductoController->filter = "";
                 $ProductoController->order = " ORDER BY RAND() LIMIT 4";
-                $ResultProductoController = $ProductoController->get(false);
+                $ResultProductoController = $ProductoController->get();
 
               foreach ($ResultProductoController->records as $key => $row): 
                 $Imgpath = '../../public/img/Productos/'.$row->Img.'.jpg';

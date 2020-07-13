@@ -9,7 +9,7 @@ var agregarToCarrito = function(Elem) {
   let data = {
     Action: 'create',
     ActionPedidoDetalle: true,
-    ProductoKey: document.getElementById('ProductoKey-'+Elem.getAttribute('code')).value,
+    ProductoCodigo: Elem.getAttribute('code'),
     ProductoCantidad: document.getElementById('ProductoCantidad-'+Elem.getAttribute('code')).value
   }
   ajax_('../../models/Pedido/Detalle.Controller.php', 'POST', 'JSON', data, 

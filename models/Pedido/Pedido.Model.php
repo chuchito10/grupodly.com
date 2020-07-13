@@ -132,16 +132,9 @@ class Pedido{
     public function Add(){
         try {
             //code...
-            $result = $this->Connection->Exec_store_procedure_json("CALL PedidoCrear(
-                null,
+            $result = $this->Connection->Exec_store_procedure_json("CALL PedidoCrear_(
+                '".$this->Key."',
                 '".$this->Cliente."',
-                '".$this->SubTotal."',
-                '".$this->Iva."',
-                '".$this->Total."',
-                '".$this->Estatus."',
-                null,
-                null,
-                null,
             @Result);", "@Result");
             return $result;
         } catch (Exception $e) {
@@ -152,7 +145,7 @@ class Pedido{
         try {
             //code...
             $result = $this->Connection->Exec_store_procedure_json("CALL PedidoCrear(
-                '".$this->keyy."',
+                '".$this->Key."',
                 '".$this->Cliente."',
                 '".$this->SubTotal."',
                 '".$this->Iva."',
@@ -170,7 +163,7 @@ class Pedido{
     public function UpdateReferencePago(){
         try {
             //code...
-            $result = $this->Connection->Exec_store_procedure_json("CALL PedidoUpdateReferenciaOpenPay(
+            $result = $this->Connection->Exec_store_procedure_json("CALL PedidoUpdateReferenciaOpenPay_(
                 '".$this->Key."',
                 '".$this->ReferenciaOpenPay."',
                 '".$this->DatosEnvio."',

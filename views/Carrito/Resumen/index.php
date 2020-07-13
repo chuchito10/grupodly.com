@@ -5,7 +5,7 @@
     include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Pedido/Detalle.Controller.php';
   }
   $DetalleController = new DetalleController();
-  $ResultDetalleController = (object)$DetalleController->getDetallePedido(false);
+  $ResultDetalleController = $DetalleController->getDetallePedido(false);
 
     $obj = $ResultDetalleController->records[0];
 ?>
@@ -13,7 +13,7 @@
 <div class="toolbar-dropdown">
   <?php foreach ($ResultDetalleController->records as $key => $row): ?>
   <div class="dropdown-product-item"><span class="dropdown-product-remove"><i class="icon-cross"></i></span><a class="dropdown-product-thumb" href="../Productos/index.php?codigo=<?php echo $row->ProductoCodigo ?>"><img src="../../public/img/Productos/<?php echo $row->ProductoImg ?>.jpg" alt="Product"></a>
-    <div class="dropdown-product-info"><a class="dropdown-product-title" href="../Productos/index.php?codigo=<?php echo $row->ProductoCodigo ?>"><?php echo $row->ProductoDescripcion ?></a><span class="dropdown-product-details"><?php echo $row->DetalleCantidad; ?> x $<?php echo $row->DetallePrecioUnitario; ?></span></div>
+    <div class="dropdown-product-info"><a class="dropdown-product-title" href="../Productos/index.php?codigo=<?php echo $row->ProductoCodigo ?>"><?php echo $row->ProductoDescripcion ?></a><span class="dropdown-product-details"><?php echo $row->DetalleCantidad; ?> x $<?php echo $row->ProductoPrecio; ?></span></div>
   </div>
   <?php endforeach ?>
   <div class="toolbar-dropdown-group">

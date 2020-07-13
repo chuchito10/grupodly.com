@@ -28,7 +28,7 @@ class PedidoController{
             if (!$this->Connection->conexion()->connect_error) {
                 $this->PedidoModel->SetParameters($this->Connection, $this->Tool);
                 $this->filter = empty($this->filter) ? "" : $this->filter;
-                $result = $this->PedidoModel->List($this->filter,"");
+                $result = $this->PedidoModel->Get($this->filter,"");
                 return $this->Tool->Message_return(false, "", $result, $JsonResult);
             }else{
                 throw new Exception("No se pudo guardar la información solicitada, si el problema persiste por favor contactanos", 1);

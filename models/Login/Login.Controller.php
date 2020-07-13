@@ -12,16 +12,16 @@ if (!class_exists("Connection")) {
   include $_SERVER["DOCUMENT_ROOT"].'/grupodly.com/models/Cliente/Cliente.Controller.php';
 }
 
-class Login{
+class LoginController{
 
-  private $conn;
-  private $Tool;
+  protected $Connection;
+  protected $Tool;
 
-  public $Email;
+  public $Correo;
   public $Password;
 
   public function __construct(){
-    $this->conn = new Connection();
+    $this->Connection = new Connection();
     $this->Tool = new Functions_tools();
   }
   /**
@@ -31,26 +31,22 @@ class Login{
    *
    * @return int $b Bar
    */
-  public function validateLogin($return_json){
+  public function validateLogin(){
     try{
-      if(!$this->conn->conexion()->connect_error){
+      if(!$this->Connection->conexion()->connect_error){
+
         $result = array();
-        $result = $this->conn->Exec_store_procedure_json("CALL Login(
-            '".$this->Email."',
+        $result = $this->Connection->Exec_store_procedure_json("CALL Login_(
+            '".$this->Correo."',
             '".$this->Password."',
             @Result);","@Result");
-        $this->result = $result;
-        $resultLoad = json_decode($this->load());
-        if (!$resultLoad->error) {
-          return $return_json == true ? json_encode($result, JSON_UNESCAPED_UNICODE) : $result;  
-        }else{
-          return $this->load();
-        }
+        $ResultLoad = $this->load($result);
+        return $result;
       }else{
-        return $this->Tools->Message_return(true,"Error!!, No existe conexión",null, $return_json);
+        return $this->Tool->Message_return(true,"Error!!, No existe conexión",null, false);
       }
     }catch (Exception $e) {
-      throw new Exception("Error al intentar iniciar sesión, validar Login", 1);
+      throw $e;
     }
   }
   /**
@@ -60,11 +56,11 @@ class Login{
    *
    * @return int $b Bar
    */
-  public function load(){
+  public function load($result){
     try {
-      if (!$this->result['error']) {
+      if (!$result['error']) {
         $ClienteController = new ClienteController();
-        $ClienteController->filter = "WHERE t01_f006 = '".$this->Email."' ";
+        $ClienteController->filter = "WHERE t01_f006 = '".$this->Correo."' ";
         $ClienteController->order = "";
         $ClienteController = $ClienteController->get(false);
         if ($ClienteController->count > 0) {
@@ -90,31 +86,6 @@ class Login{
     }
   }
 
-  public static function controller(){
-    try {
-      $Login = new Login();
-      $Action = $Login->Tool->validate_isset_post("Action");
-      switch ($Action) {
-        case 'login':
-          $Login->Email     = $Login->Tool->validEmail("Email", "Correo", true);
-          $Login->Password  = $Login->Tool->validate_isset_post("Password");
-          echo $Login->validateLogin(true);
-          break;
-        default:
-          throw new Exception("No se encontro la opción solicitada, por favor contactanos.....");
-          break;
-      }
-    } catch (Exception $e) {
-      echo $Login->Tool->Message_return(true, $e->getMessage(), null, true);
-    }
-  }
 
-}
-
-
-$Tool = new Functions_tools();
-# Comprobación Autorización Ajax    
-if (isset($_SERVER['PHP_AUTH_USER']) && $Tool->securityAjax() && $_POST['ActionLogin']) { 
-  Login::controller();
-  unset($Tool);
+  
 }

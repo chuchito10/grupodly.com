@@ -107,20 +107,20 @@ class Producto{
     }
     public function GeyBy($Producto){
         try {
-            $SQLSTATEMENT = "SELECT * FROM t06_productos where t06_pk01 = '".$Producto."' ";
+            $SQLSTATEMENT = "SELECT * FROM listar_productos where codigo = '".$Producto."' ";
             $result = $this->Connection->QueryReturn($SQLSTATEMENT);
             $data = false;
 
             while ($row = $result->fetch_object()) {
-                $this->ProductoKey   = $row->t06_pk01;
-                $this->Codigo        = $row->t06_f001;
-                $this->Descripcion   = $row->t06_f002;
-                $this->Img           = $row->t06_f003;
-                $this->Ancho         = $row->t06_f004;
-                $this->Alto          = $row->t06_f005;
-                $this->Grosor        = $row->t06_f006;
-                $this->Existencia    = $row->t06_f007;
-                $this->Precio        = $row->t06_f008;
+                $this->ProductoKey   = $row->id;
+                $this->Codigo        = $row->codigo;
+                $this->Descripcion   = $row->dsc_producto;
+                $this->Img           = $row->img;
+                $this->Ancho         = $row->ancho;
+                $this->Alto          = $row->alto;
+                $this->Grosor        = $row->grosor;
+                $this->Existencia    = $row->cantidad;
+                $this->Precio        = $row->costo;
                 // $this->UnidadMedidaKey  = $row->t06_f009;
                 // $this->CategoriaKey  = $row->t06_f011;
                 // $this->ProveedorKey  = $row->t06_f012;
@@ -134,28 +134,28 @@ class Producto{
 
     public function Get($filter, $order){
         try {
-            $SQLSTATEMENT = "SELECT * FROM list_productos ".$filter." ".$order;
+            $SQLSTATEMENT = "SELECT * FROM listar_productos ".$filter." ".$order;
             // echo $SQLSTATEMENT;
             $result = $this->Connection->QueryReturn($SQLSTATEMENT);
             $data = [];
 
             while ($row = $result->fetch_object()) {
                 $Producto = new Producto();
-                $Producto->ProductoKey              =   $row->t06_pk01;
-                $Producto->Codigo                   =   $row->t06_f001;
-                $Producto->Descripcion              =   $row->t06_f002;
-                $Producto->Img                      =   $row->t06_f003;
-                $Producto->Ancho                    =   $row->t06_f004;
-                $Producto->Alto                     =   $row->t06_f005;
-                $Producto->Grosor                   =   $row->t06_f006;
-                $Producto->Existencia               =   $row->t06_f007;
-                $Producto->Precio                   =   $row->t06_f008;
+                $Producto->ProductoKey              =   $row->id;
+                $Producto->Codigo                   =   $row->codigo;
+                $Producto->Descripcion              =   $row->dsc_producto;
+                $Producto->Img                      =   $row->img;
+                $Producto->Ancho                    =   $row->ancho;
+                $Producto->Alto                     =   $row->alto;
+                $Producto->Grosor                   =   $row->grosor;
+                $Producto->Existencia               =   $row->cantidad;
+                $Producto->Precio                   =   $row->costo;
                 $Producto->CategoriaKey             =   $row->t07_pk01;
                 $Producto->CategoriaDescripcion     =   $row->t07_f001;
-                $Producto->ProveedorKey             =   $row->t08_pk01;
-                $Producto->ProveedorDescripcion     =   $row->t08_f001;
-                $Producto->UnidadMedidaKey          =   $row->t10_pk01;
-                $Producto->UnidadMedidaDescripcion  =   $row->t10_f001;
+                $Producto->ProveedorKey             =   $row->id;
+                $Producto->ProveedorDescripcion     =   $row->nombre;
+                // $Producto->UnidadMedidaKey          =   $row->t10_pk01;
+                // $Producto->UnidadMedidaDescripcion  =   $row->t10_f001;
                 $data[] = $Producto;
             }
             return $data;
@@ -186,5 +186,3 @@ class Producto{
       }
     }
 }
-
-?>

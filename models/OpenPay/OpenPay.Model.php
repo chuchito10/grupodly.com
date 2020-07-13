@@ -94,7 +94,7 @@
             }
             try {
                 $this->OpenPayy = Openpay::getInstance($this->Id, $this->PublicKey);
-                Openpay::setProductionMode(false);
+                Openpay::setProductionMode($this->ProductionMode);
                 $customer = array(
                     'name'          => $Cliente->Nombre,
                     'last_name'     => $Cliente->Apellido,
@@ -107,7 +107,7 @@
           
                   $chargeData = array(
                     'method' => 'card',
-                    'source_id'         => $this->TokenId,//token targeta
+                    'source_id'         => $this->TokenId,//token tarjeta
                     'amount'            => $valor_s,
                     "currency"          => $Moneda,
                     'description'       => (float)$PedidoCliente->GetKey(),

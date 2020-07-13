@@ -25,14 +25,14 @@ if (!class_exists("Connection")) {
       $this->Tool = new Functions_tools();
     }
 
-    public function get($return_json){
+    public function get(){
       try {
         if (!$this->conn->conexion()->connect_error) {
           $ProductoModel = new Producto(); 
           $ProductoModel->SetParameters($this->conn, $this->Tool);
           $items = $ProductoModel->Get($this->filter, $this->order);
           unset($ProductoModel);
-          return $this->Tool->Message_return(false, "", $items, $return_json);
+          return $this->Tool->Message_return(false, "", $items, false);
         }
       } catch (Exception $e) {
         throw $e;

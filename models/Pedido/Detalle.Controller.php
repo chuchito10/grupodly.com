@@ -61,18 +61,15 @@ class DetalleController{
             $this->ProductoModel->SetParameters($this->Connection, $this->Tool);
             if (!isset($_SESSION['Ecommerce-PedidoKey']) || empty($_SESSION['Ecommerce-PedidoKey'])) {
                 // crear un nuevo pedido
+                $this->PedidoModel->SetKey(0);
                 $this->PedidoModel->SetCliente(isset($_SESSION['Ecommerce-ClienteKey']) ? $_SESSION['Ecommerce-ClienteKey'] : 0);
-                $this->PedidoModel->SetSubTotal(0);
-                $this->PedidoModel->SetIva(0.40);
-                $this->PedidoModel->SetTotal(0);
-                $this->PedidoModel->SetStatus(0);
                 $result = $this->PedidoModel->Add();
                 $_SESSION['Ecommerce-PedidoKey'] = $result['key'];
             }else{
                 $this->PedidoModel->SetKey($_SESSION['Ecommerce-PedidoKey']);
             }
             // buscar el producto seleccionado
-            $this->ProductoModel->SetCodigo($_POST['ProductoKey']);
+            $this->ProductoModel->SetCodigo($_POST['ProductoCodigo']);
             $Exists = $this->ProductoModel->GeyBy($this->ProductoModel->GetCodigo());
             
             // echo "Codigo".$this->ProductoModel->GetDescripcion();
@@ -82,13 +79,9 @@ class DetalleController{
                 // verificar existencia
                 
                 $this->DetalleModel->SetCantidad($_POST['ProductoCantidad']);
-                $this->DetalleModel->SetEstatus(1);
-                $this->DetalleModel->SetIva(0.40);
-                $this->DetalleModel->SetItemCode($this->ProductoModel->GetProductoKey());
+                $this->DetalleModel->SetItemCode($this->ProductoModel->GetCodigo());
                 $this->DetalleModel->SetPedido($_SESSION['Ecommerce-PedidoKey']);
-                $this->DetalleModel->SetPrecioUnitario($this->ProductoModel->GetPrecio());
                 $result = $this->DetalleModel->Add();
-                // return $JsonResult ? json_encode($result, JSON_UNESCAPED_UNICODE) : $result ;
                 return $this->Tool->Message_return(false, "Producto agregado", null, $JsonResult);
             }else{
                 return $this->Tool->Message_return(true, "No existe el producto : '".$this->ProductoModel->GetCodigo()."'", null, $JsonResult);
