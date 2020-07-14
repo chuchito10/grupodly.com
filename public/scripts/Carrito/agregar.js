@@ -12,7 +12,7 @@ var agregarToCarrito = function(Elem) {
     ProductoCodigo: Elem.getAttribute('code'),
     ProductoCantidad: document.getElementById('ProductoCantidad-'+Elem.getAttribute('code')).value
   }
-  ajax_('../../models/Pedido/Detalle.Controller.php', 'POST', 'JSON', data, 
+  ajax_('../../models/Pedido/Detalle.Route.php', 'POST', 'JSON', data, 
   function(response){
     if (!response.error) {
       toastAlert('success', '', response.message, 'topRight', 'icon-circle-check')

@@ -41,12 +41,13 @@ class DetalleController{
             throw new Exception("No se pudo obtener la información solicitada, si el problema persiste por favor contactanos", 1);
         }
     }
-    public function getDetallePedido($JsonResult){
+    public function getDetallePedido(){
         try {
             if (!$this->Connection->conexion()->connect_error) {
                 $this->DetalleModel->SetParameters($this->Connection, $this->Tool);
-                $result = $this->DetalleModel->ListDetallePedido("WHERE t04_pk01 = ".$_SESSION['Ecommerce-PedidoKey']." ","");
-                return $this->Tool->Message_return(false, "", $result, $JsonResult);
+                $keyy = isset($_SESSION['Ecommerce-PedidoKey']) ? $_SESSION['Ecommerce-PedidoKey'] : 0;
+                $result = $this->DetalleModel->ListDetallePedido("WHERE t04_pk01 = ".$keyy." ","");
+                return $this->Tool->Message_return(false, "", $result, false);
             }else{
                 throw new Exception("No se pudo guardar la información solicitada, si el problema persiste por favor contactanos", 1);
             }
@@ -54,7 +55,7 @@ class DetalleController{
             throw new Exception("No se pudo obtener la información solicitada, si el problema persiste por favor contactanos", 1);
         }
     }
-    public function AgregarArticuloPedido($JsonResult){
+    public function AgregarArticuloPedido(){
         if (!$this->Connection->conexion()->connect_error) {
             $this->DetalleModel->SetParameters($this->Connection, $this->Tool);
             $this->PedidoModel->SetParameters($this->Connection, $this->Tool);
@@ -82,9 +83,9 @@ class DetalleController{
                 $this->DetalleModel->SetItemCode($this->ProductoModel->GetCodigo());
                 $this->DetalleModel->SetPedido($_SESSION['Ecommerce-PedidoKey']);
                 $result = $this->DetalleModel->Add();
-                return $this->Tool->Message_return(false, "Producto agregado", null, $JsonResult);
+                return $result;
             }else{
-                return $this->Tool->Message_return(true, "No existe el producto : '".$this->ProductoModel->GetCodigo()."'", null, $JsonResult);
+                return $this->Tool->Message_return(true, "No existe el producto : '".$this->ProductoModel->GetCodigo()."'", null, false);
             }
             
         }else{
@@ -107,32 +108,5 @@ class DetalleController{
             throw $e;
         }
     }
-    public function Controller(){
-        try {
-            $Action = $this->Tool->validate_isset_post('Action');
-            switch ($Action) {
-                case 'create':
-                    echo $this->AgregarArticuloPedido(true);
-                break;
-                case 'delete':
-                    echo $this->DeleteArticuloPedido(true);
-                    break;
-                default:
-                    throw new Exception("No se encontro la opción solicitada, por favor contactanos");
-                break;
-            }
-        } catch (Exception $e) {
-            echo $this->Tool->Message_return(true, $e->getMessage(), null, true);
-        }
-    }
+
 }
-  $Tool = new Functions_tools();
-  # Comprobación Autorización Ajax    
-  if (isset($_SERVER['PHP_AUTH_USER']) && $Tool->securityAjax() && isset($_REQUEST['ActionPedidoDetalle'])) { 
-    $DetalleController = new DetalleController();
-    $DetalleController->Controller();
-    unset($DetalleController);
-  }
-  unset($Tool);
-    
-?>

@@ -6,8 +6,8 @@
     include $_SERVER['DOCUMENT_ROOT'].'/grupodly.com/models/Pedido/Pedido.Controller.php';
   }
   $DetalleController = new DetalleController();
-  $ResultDetalleController = $DetalleController->getDetallePedido(false);
-
+  $ResultDetalleController = $DetalleController->getDetallePedido();
+  
   $pedidoSubtotal = 0;
   if(isset($_SESSION['Ecommerce-PedidoKey'])){ 
     $PedidoController = new PedidoController();

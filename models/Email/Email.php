@@ -26,8 +26,8 @@
             $this->Mailer->Port      =   '587';*/
             
             // // TEST
-            $this->Mailer->Host       =   '192.168.31.31';
-            $this->Mailer->Port       =   '26';
+            $this->Mailer->Host       =   'localhost';
+            $this->Mailer->Port       =   '25';
             
             $this->Mailer->Username       =  'notificaciones@fibremex.com';
             $this->Mailer->Password       =  'notificaciones.2017';
